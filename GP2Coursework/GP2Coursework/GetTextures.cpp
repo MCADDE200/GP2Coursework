@@ -10,8 +10,8 @@ GetTextures::GetTextures()
 
 void GetTextures::initTextures(const std::string& fileName)
 {
-	int width, height, numOfComponents; //width, height, and no of components of image
-	unsigned char* dataOfImage = stbi_load((fileName).c_str(), &width, &height, &numOfComponents, 4); //load the image and store the data
+	int width, height, numberOfComponents; //width, height, and no of components of image
+	unsigned char* dataOfImage = stbi_load((fileName).c_str(), &width, &height, &numberOfComponents, 4); //load the image and store the data
 
 	if (dataOfImage == NULL)
 	{

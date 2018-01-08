@@ -8,13 +8,13 @@ MainGame::MainGame()
 {
 	state = GameState::PLAY;
 	TheDisplay* gameDisplay = new TheDisplay(); //new display
-	TheMesh* mesh1();
-	TheMesh* mesh2();
-	GetTextures* texture();
-	GetTextures* texture2();
+	TheMesh* playerCar();
+	TheMesh* rockObstacle();
+	GetTextures* rockTexture();
+	GetTextures* carTexture();
 	CreateShaders* shader();
 	CreateShaders* fogShader();
-	AudioClass* audioDevice();
+	AudioClass* soundDevice();
 	playerPosX = 0.0f;
 	rockPosZ = 10.0f;
 	collided = false;
@@ -35,16 +35,16 @@ void MainGame::initialiseSystems()
 {
 	gameDisplay.initialiseDisplay();
 	
-	mesh1.loadTheModel("..\\res\\Car.obj");
-	mesh2.loadTheModel("..\\res\\RockOBJ.obj");
+	playerCar.loadTheModel("..\\res\\Car.obj");
+	rockObstacle.loadTheModel("..\\res\\RockOBJ.obj");
 
-	texture.initTextures("..\\res\\Rock.jpg"); //get bricks texture
-	texture2.initTextures("..\\res\\black.jpg");
+	rockTexture.initTextures("..\\res\\Rock.jpg"); //get bricks texture
+	carTexture.initTextures("..\\res\\carTexture.jpg");
 	shader.initShaders("..\\res\\shader"); //new shader
 	fogShader.initShaders("..\\res\\shader");
 
-	backgroundMusic = audioDevice.loadSoundFile("..\\res\\backgroundMusic.wav");
-	crashSound = audioDevice.loadSoundFile("..\\res\\bang.wav");
+	backgroundMusic = soundDevice.loadSoundFile("..\\res\\backgroundMusic.wav");
+	crashSound = soundDevice.loadSoundFile("..\\res\\bang.wav");
 
 	myCamera.initCamera(glm::vec3(0, 0, -5), 70.0f, (float)gameDisplay.getTheWidth() / gameDisplay.getTheHeight(), 0.01f, 1000.0f);
 	counter = 0.0f;
@@ -56,7 +56,7 @@ void MainGame::gameLoop()
 	{
 		inputHandler();
 		drawToScreen();
-		collision(mesh1.getSpherePos(), mesh1.getSphereRadius(), mesh2.getSpherePos(), mesh2.getSphereRadius());
+		collision(playerCar.getSpherePos(), playerCar.getSphereRadius(), rockObstacle.getSpherePos(), rockObstacle.getSphereRadius());
 		playAudio(backgroundMusic, myCamera.GetCameraPosition());
 
 	}
@@ -120,7 +120,7 @@ void MainGame::playAudio(unsigned int Source, glm::vec3 pos)
 	*/
 	if (AL_PLAYING != state)
 	{
-		audioDevice.playSoundFile(Source, pos);
+		soundDevice.playSoundFile(Source, pos);
 	}
 }
 
@@ -151,9 +151,9 @@ void MainGame::drawToScreen()
 
 		shader.BindShaders();
 		shader.UpdateShaders(transform, myCamera);
-		texture2.BindTextures(0);
-		mesh1.DrawMesh();
-		mesh1.updateSphereData(*transform.GetPos(), 0.6f);
+		carTexture.BindTextures(0);
+		playerCar.DrawMesh();
+		playerCar.updateSphereData(*transform.GetPos(), 0.6f);
 
 		if (counter > 11)
 		{
@@ -163,17 +163,17 @@ void MainGame::drawToScreen()
 		transform.SetRot(glm::vec3(0.0, 0.0, 0.0));
 		transform.SetScale(glm::vec3(0.05, 0.05, 0.05));
 
-		fogShader.BindShaders();
-		fogShader.UpdateShaders(transform, myCamera);
-		texture.BindTextures(0);
-		mesh2.DrawMesh();
-		mesh2.updateSphereData(*transform.GetPos(), 0.6f);
+		shader.BindShaders();
+		shader.UpdateShaders(transform, myCamera);
+		rockTexture.BindTextures(0);
+		rockObstacle.DrawMesh();
+		rockObstacle.updateSphereData(*transform.GetPos(), 0.6f);
 		counter = counter + 0.05f;
 	}
 	else
 	{
-		mesh1.~TheMesh();
-		mesh2.~TheMesh();
+		playerCar.~TheMesh();
+		rockObstacle.~TheMesh();
 		crashSoundBool = true;
 	}
 

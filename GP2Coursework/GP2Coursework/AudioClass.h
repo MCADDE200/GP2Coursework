@@ -34,19 +34,19 @@ class AudioClass
 	std::vector<dataStruct> datas;
 	ALCcontext* context;
 	ALCdevice *device;
-	bool isBigEndian();
-	int convertToInt(char* buffer, int length);
-	char* loadWAVFile(const char* fn, int& chan, int& samplerate, int& bps, int& size);
+	bool isBigEndian(); //Checks to see what type of data is stored so sound data is read properly
+	int convertToInt(char* buffer, int length); //converts certain audio files to int which can be read
+	char* loadWAVFile(const char* fn, int& chan, int& samplerate, int& bps, int& size); //Load wav file
 
 public:
 	AudioClass();
 	~AudioClass();
-	unsigned int loadSoundFile(const char* filename);
-	void deleteSoundFile(unsigned int id);
-	void playSoundFile(unsigned int id);
-	void playSoundFile(unsigned int id, glm::vec3& pos);
-	void stopSound(unsigned int id);
-	void setlistener(glm::vec3& pos, glm::vec3& camLookAt);
+	unsigned int loadSoundFile(const char* filename); //load files
+	void deleteSoundFile(unsigned int id); //delete files from memory
+	void playSoundFile(unsigned int id); //play files
+	void playSoundFile(unsigned int id, glm::vec3& pos); //play files given a position
+	void stopSound(unsigned int id); //stop playing sound
+	void setlistener(glm::vec3& pos, glm::vec3& camLookAt); //sets a listener;
 
 private:
 

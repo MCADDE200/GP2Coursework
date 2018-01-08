@@ -48,7 +48,7 @@ void TheDisplay::initialiseDisplay()
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);// set up z-buffer
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); // set up double buffer   
 
-	window = SDL_CreateWindow("Game Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, widthOfScreen, heightOfScreen, SDL_WINDOW_OPENGL); // create window
+	window = SDL_CreateWindow("Dodge The Rock", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, widthOfScreen, heightOfScreen, SDL_WINDOW_OPENGL); // create window
 
 	if (window == nullptr)
 	{

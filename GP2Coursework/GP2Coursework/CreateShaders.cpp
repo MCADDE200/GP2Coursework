@@ -23,7 +23,7 @@ void CreateShaders::initShaders(const std::string& filename)
 	
 
 	glLinkProgram(shaderProgram); //create executables that will run on the GPU shaders
-	ReturnShaderError(shaderProgram, GL_LINK_STATUS, true, "Error: Shader program linking failed"); // cheack for error
+	ReturnShaderError(shaderProgram, GL_LINK_STATUS, true, "Error: Shader program linking failed"); // check for error
 
 	glValidateProgram(shaderProgram); //check the entire program is valid
 	ReturnShaderError(shaderProgram, GL_VALIDATE_STATUS, true, "Error: Shader program not valid");

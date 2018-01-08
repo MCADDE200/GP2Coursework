@@ -14,6 +14,7 @@ public:
 		this->theNormal = theNormal;
 	}
 
+	//Getters for position, texture coords and normal of the mesh
 	glm::vec3* GetPosition() { return &position; }
 	glm::vec2* GetTextureCoords() { return &textureCoords; }
 	glm::vec3* GetTheNormal() { return &theNormal; }

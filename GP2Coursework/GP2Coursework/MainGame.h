@@ -29,15 +29,15 @@ private:
 
 	TheDisplay gameDisplay;
 	GameState state;
-	TheMesh mesh1;
-	TheMesh mesh2;
+	TheMesh playerCar;
+	TheMesh rockObstacle;
 	TheCamera myCamera;
-	GetTextures texture;
-	GetTextures texture2;
+	GetTextures rockTexture;
+	GetTextures carTexture;
 	GetTextures texture3;
 	CreateShaders shader;
 	CreateShaders fogShader;
-	AudioClass audioDevice;
+	AudioClass soundDevice;
 
 	unsigned int backgroundMusic;
 	unsigned int crashSound;

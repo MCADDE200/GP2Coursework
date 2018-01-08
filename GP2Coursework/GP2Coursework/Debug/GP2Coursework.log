@@ -1,4 +1,7 @@
-﻿  MainGame.cpp
+﻿  TheDisplay.cpp
+c:\users\mcadde200\desktop\gp2\gp2coursework\gp2coursework\thedisplay.cpp(51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  MainGame.cpp
+  GetTextures.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
   GP2Coursework.cpp

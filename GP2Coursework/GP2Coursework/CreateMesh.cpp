@@ -72,7 +72,6 @@ void TheMesh::DrawMesh()
 	glBindVertexArray(VAObject);
 
 	glDrawElements(GL_TRIANGLES, drawNumVAObject, GL_UNSIGNED_INT, 0);
-	//glDrawArrays(GL_TRIANGLES, 0, drawCount);
 
 	glBindVertexArray(0);
 }

@@ -152,7 +152,6 @@
     <ClInclude Include="CreateShaders.h" />
     <ClInclude Include="obj_loader.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SkyboxClass.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="GetTextures.h" />
     <ClInclude Include="TheCamera.h" />
@@ -167,7 +166,6 @@
     <ClCompile Include="CreateMesh.cpp" />
     <ClCompile Include="CreateShaders.cpp" />
     <ClCompile Include="obj_loader.cpp" />
-    <ClCompile Include="SkyboxClass.cpp" />
     <ClCompile Include="stb_image.c" />
     <ClCompile Include="GetTextures.cpp" />
     <ClCompile Include="TheDisplay.cpp" />
